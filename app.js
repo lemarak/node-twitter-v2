@@ -5,6 +5,7 @@ require("dotenv").config();
 const index = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3000;
+require("./database");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
