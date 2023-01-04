@@ -1,0 +1,18 @@
+extends ../layout 
+
+block content
+  div.d-flex.flex-row.content.mx-auto
+    div.profile-container
+      include ../includes/profile
+    div.flex-fill
+      form.card(method="post" action="/api/tweets")
+        div.card-header Ecrire un tweet 
+        div.card-body 
+          div.form-group 
+            textarea.form-control(name="content" placeholder="what is happening")
+          if errors 
+            ul 
+              each error in errors 
+                li.text-danger=error  
+          div.w-100 
+            input.btn.btn-primary.ml-auto.d-block(type="submit" value="Send")

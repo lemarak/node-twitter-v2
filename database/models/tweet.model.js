@@ -4,8 +4,8 @@ const schema = mongoose.Schema;
 const tweetSchema = schema({
   content: {
     type: String,
-    maxlength: 280,
-    minlength: 2,
+    maxlength: [140, "trop long"],
+    minlength: [2, "trop court"],
     required: true,
   },
 });

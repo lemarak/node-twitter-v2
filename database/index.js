@@ -9,3 +9,4 @@ mongoose
     console.log("connexion db OK ;)");
   })
   .catch((err) => console.log("Error:", err));
+mongoose.set("strictQuery", true);
