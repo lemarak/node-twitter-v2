@@ -19,7 +19,7 @@ exports.tweetCreate = async (req, res, next) => {
     res.redirect("/tweets");
   } catch (error) {
     const errors = Object.keys(error.errors).map(
-      (key) => err.errors[key].message
+      (key) => error.errors[key].message
     );
     res.status(400).render("tweets/tweet-form", { errors });
   }
