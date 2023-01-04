@@ -4,4 +4,8 @@ block content
   div.d-flex.flex-row.content.mx-auto
     div.profile-container
       include ../includes/profile
-    div.flex-fill Tweets
+    div.flex-fill.d-flex.flex-column
+      if tweets 
+          each tweet in tweets 
+            div.card.tweet-element
+              div.card-body=tweet.content

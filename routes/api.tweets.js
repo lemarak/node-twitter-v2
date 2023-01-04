@@ -13,7 +13,7 @@ router.post("/", (req, res) => {
       const errors = Object.keys(err.errors).map(
         (key) => err.errors[key].message
       );
-      res.render("tweets/tweet-form", { errors });
+      res.status(400).render("tweets/tweet-form", { errors });
     });
 });
 
