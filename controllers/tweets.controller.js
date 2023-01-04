@@ -1,9 +1,13 @@
-const { getTweets, createTweet } = require("../queries/tweets.queries");
+const {
+  getTweets,
+  createTweet,
+  deleteTweet,
+} = require("../queries/tweets.queries");
 
 exports.tweetList = async (req, res, next) => {
   try {
     const tweets = await getTweets();
-    res.render("tweets/tweet-list", { tweets });
+    res.render("tweets/tweet", { tweets });
   } catch (error) {
     next(error);
   }
@@ -22,5 +26,15 @@ exports.tweetCreate = async (req, res, next) => {
       (key) => error.errors[key].message
     );
     res.status(400).render("tweets/tweet-form", { errors });
+  }
+};
+
+exports.tweetDelete = async (req, res, next) => {
+  try {
+    await deleteTweet(req.params.tweetId);
+    const tweets = await getTweets();
+    res.render("tweets/tweet-list", { tweets });
+  } catch (error) {
+    next(error);
   }
 };
