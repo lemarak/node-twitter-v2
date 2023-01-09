@@ -10,6 +10,6 @@ router.get("/signin/form", signinForm);
 
 router.post("/signin", signin);
 
-router.delete("/logout", signout);
+router.get("/signout", signout);
 
 module.exports = router;
