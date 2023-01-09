@@ -2,5 +2,5 @@ if tweets
     each tweet in tweets 
       div.card.tweet-element
         div.card-body
-          div.card-tetxt=tweet.content
+          a.card-tetxt(href="/tweets/edit/"+tweet._id)=tweet.content
           button.btn.btn-danger.mt-2.float-right(tweetid=tweet._id) x
