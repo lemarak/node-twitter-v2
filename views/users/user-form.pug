@@ -1,0 +1,22 @@
+extends ../layout 
+
+block content
+  div.d-flex.flex-row.content.justify-content-center.mx-auto
+    form.card(method="post" action="/users/signup")
+      div.card-header Inscription
+      div.card-body 
+        div.form-group
+          label Username
+          input.form-control(type="text", name="username")
+        div.form-group
+          label Email
+          input.form-control(type="email", name="email")
+        div.form-group
+          label Password
+          input.form-control(type="password", name="password")
+        if errors 
+          ul 
+            each error in errors 
+              li.text-danger=error  
+        div.w-100 
+          input.btn.btn-primary.ml-auto.d-block(type="submit" value="Valider")
