@@ -8,6 +8,7 @@ const tweetSchema = schema({
     minlength: [2, "trop court"],
     required: true,
   },
+  author: { type: schema.Types.ObjectId, ref: "user", required: true },
 });
 
 const Tweet = mongoose.model("tweet", tweetSchema);

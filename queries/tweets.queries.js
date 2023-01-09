@@ -8,8 +8,8 @@ exports.getTweet = (tweetId) => {
   return (tweet = Tweet.findById(tweetId));
 };
 
-exports.createTweet = (body) => {
-  const newTweet = new Tweet(body);
+exports.createTweet = (tweet) => {
+  const newTweet = new Tweet(tweet);
   return newTweet.save();
 };
 
