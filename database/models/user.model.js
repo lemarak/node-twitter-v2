@@ -12,6 +12,7 @@ const userSchema = schema({
     email: { type: String, require: true, unique: true },
     password: { type: String, required: true },
   },
+  avatar: { type: String, default: "/images/avatardefault.svg" },
 });
 
 userSchema.statics.hashPassword = (password) => {
