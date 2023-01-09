@@ -13,3 +13,11 @@ exports.createUser = async (user) => {
     throw error;
   }
 };
+
+exports.findUserByEmail = (email) => {
+  return User.findOne({ "local.email": email });
+};
+
+exports.findUserById = (id) => {
+  return User.findById(id);
+};
