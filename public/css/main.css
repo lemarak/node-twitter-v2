@@ -1,3 +1,15 @@
+body {
+  background: #f8f9fa;
+}
+
+.navbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.img-fluid {
+  min-height: 80px;
+  max-height: 100px;
+}
 .content {
   max-width: 1000px;
   margin-top: 20px;
@@ -6,6 +18,7 @@
 .profile-container {
   width: 30%;
   max-width: 300px;
+  color: #657786;
 }
 
 .btn-tweet {
@@ -15,10 +28,12 @@
 .tweet-element {
   border-radius: 0px;
   font-size: 14px;
+  border: 0px;
   border-top: 0px;
+  border-top: 1px solid #ddd;
 }
 .tweet-element:first-child {
-  border-top: 1px solid #ddd;
+  border-top: 0px;
 }
 
 .b1 {
