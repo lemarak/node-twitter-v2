@@ -1,7 +1,15 @@
 const Tweet = require("../database/models/tweet.model");
 
-exports.getTweets = () => {
+exports.getAllTweets = () => {
   return (tweets = Tweet.find());
+};
+
+exports.getCurrentUserTweetsWithFollowing = (user) => {
+  return Tweet.find({ author: { $in: [...user.following, user._id] } });
+};
+
+exports.getTweetsByAuthorId = (authorId) => {
+  return Tweet.find({ author: authorId });
 };
 
 exports.getTweet = (tweetId) => {

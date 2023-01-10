@@ -1,5 +1,5 @@
 const {
-  getTweets,
+  getCurrentUserTweetsWithFollowing,
   getTweet,
   createTweet,
   updateTweet,
@@ -8,11 +8,12 @@ const {
 
 exports.tweetList = async (req, res, next) => {
   try {
-    const tweets = await getTweets();
+    const tweets = await getCurrentUserTweetsWithFollowing(req.user);
     res.render("tweets/tweet", {
       tweets,
       isAuthenticated: req.isAuthenticated(),
       currentUser: req.user,
+      user: req.user,
     });
   } catch (error) {
     next(error);
@@ -31,6 +32,7 @@ exports.tweetEdit = async (req, res, next) => {
   try {
     const tweetId = req.params.tweetId;
     const tweet = await getTweet(tweetId);
+    console.log(tweet);
     res.render("tweets/tweet-form", {
       tweet,
       isAuthenticated: req.isAuthenticated(),
