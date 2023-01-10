@@ -1,6 +1,13 @@
 if tweets 
     each tweet in tweets 
       div.card.tweet-element
-        div.card-body
-          a.card-tetxt(href="/tweets/edit/"+tweet._id)=tweet.content
-          button.btn.btn-danger.mt-2.float-right(tweetid=tweet._id) x
+        div.card-body.d-flex.flex-column
+          div.d-flex.flex-row.justify-content-center.align-items-center
+            img.pr-2(width="30" height="30" src=tweet.author.avatar)
+            span.flex-fill= tweet.author.username
+            if editable && (currentUser._id.toString() === tweet.author._id.toString())
+              div.d-flex.flex-row.justify-content-center
+                a.fas.fa-edit.pr-2.text-success(href="/tweets/edit/"+tweet._id)
+                i(class="fas fa-minus-circle text-danger pointer-cursor" tweetid=tweet._id)
+          div=tweet.content
+

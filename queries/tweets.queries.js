@@ -5,11 +5,13 @@ exports.getAllTweets = () => {
 };
 
 exports.getCurrentUserTweetsWithFollowing = (user) => {
-  return Tweet.find({ author: { $in: [...user.following, user._id] } });
+  return Tweet.find({
+    author: { $in: [...user.following, user._id] },
+  }).populate("author");
 };
 
 exports.getTweetsByAuthorId = (authorId) => {
-  return Tweet.find({ author: authorId });
+  return Tweet.find({ author: authorId }).populate("author");
 };
 
 exports.getTweet = (tweetId) => {
@@ -30,5 +32,5 @@ exports.updateTweet = (tweetId, body) => {
 };
 
 exports.deleteTweet = (id) => {
-  return Tweet.deleteOne({ id });
+  return Tweet.findByIdAndDelete(id);
 };

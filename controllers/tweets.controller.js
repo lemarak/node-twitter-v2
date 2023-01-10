@@ -14,6 +14,7 @@ exports.tweetList = async (req, res, next) => {
       isAuthenticated: req.isAuthenticated(),
       currentUser: req.user,
       user: req.user,
+      editable: true,
     });
   } catch (error) {
     next(error);
@@ -55,6 +56,7 @@ exports.tweetCreate = async (req, res, next) => {
       errors,
       isAuthenticated: req.isAuthenticated(),
       currentUser: req.user,
+      user: req.user,
     });
   }
 };
@@ -80,9 +82,15 @@ exports.tweetUpdate = async (req, res, next) => {
 
 exports.tweetDelete = async (req, res, next) => {
   try {
-    await deleteTweet(req.params.tweetId);
-    const tweets = await getTweets();
-    res.render("tweets/tweet-list", { tweets });
+    const id = req.params.tweetId;
+    await deleteTweet(id);
+
+    const tweets = await getCurrentUserTweetsWithFollowing(req.user);
+    res.render("tweets/tweet-list", {
+      tweets,
+      currentUser: req.user,
+      editable: true,
+    });
   } catch (error) {
     next(error);
   }

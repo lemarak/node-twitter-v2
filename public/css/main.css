@@ -36,6 +36,10 @@ body {
   border-top: 0px;
 }
 
+.pointer-cursor {
+  cursor: pointer;
+}
+
 .b1 {
   border: 1px solid red;
 }
